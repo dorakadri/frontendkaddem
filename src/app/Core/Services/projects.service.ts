@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 
 import { Observable } from "rxjs";
 import Swal from "sweetalert2";
-import { environment } from "../../../environments/environment";
+import { environment } from "../../../environments/environment.prod";
 import { Team } from "../Modals/Team";
 import { projet } from "../Modals/project";
 

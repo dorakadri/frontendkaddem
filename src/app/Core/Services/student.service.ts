@@ -1,56 +1,56 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Department } from '../Modals/Department';
-import { Team } from '../Modals/Team';
-import { Student } from '../Modals/Student';
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Department } from "../Modals/Department";
+import { Team } from "../Modals/Team";
+import { Student } from "../Modals/Student";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class StudentService {
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-  API = 'http://localhost:8081/SpringMVC/controllerEtudiant';
+  API = "https://backendspring-production.up.railway.app/controllerEtudiant";
 
   public registerStudent(studentData: any) {
-    return this.http.post<Student>(this.API + '/ajouterEtudiant', studentData);
+    return this.http.post<Student>(this.API + "/ajouterEtudiant", studentData);
   }
 
   public getStudents() {
-    return this.http.get(this.API + '/DisplayStudents');
+    return this.http.get(this.API + "/DisplayStudents");
   }
 
   public deleteStudent(idEtudiant: any) {
-    return this.http.delete(this.API + '/deletestudent/?id=' + idEtudiant);
+    return this.http.delete(this.API + "/deletestudent/?id=" + idEtudiant);
   }
 
   public updateStudents(student: any) {
-    return this.http.put(this.API + '/updateStudentById', student);
-  }
-  
-  public assignStudent(idEtudiant:any,idDepart:any){
-
-        return this.http.post<number>(`${this.API}/assignetudianttodepartment/${idEtudiant}/${idDepart}`,{});
-
+    return this.http.put(this.API + "/updateStudentById", student);
   }
 
-   public getDepartements(){
-
-        return this.http.get<Department[]>('http://localhost:8081/SpringMVC/DepartmentController/displayalldepartment' );
+  public assignStudent(idEtudiant: any, idDepart: any) {
+    return this.http.post<number>(
+      `${this.API}/assignetudianttodepartment/${idEtudiant}/${idDepart}`,
+      {}
+    );
   }
 
- public getallequipe() {
-    return this.http.get<Team[]>('http://localhost:8081/SpringMVC/EquipeController/displayEquipes' );
-  }
-  
-  public assignstudenttoequipe(idEtudiant:any,ideq:any){
-
-
-    return this.http.post(`${this.API}/assignEtudiantEquipe/${ideq}/${idEtudiant}`,{});
-
+  public getDepartements() {
+    return this.http.get<Department[]>(
+      "https://backendspring-production.up.railway.app/DepartmentController/displayalldepartment"
+    );
   }
 
+  public getallequipe() {
+    return this.http.get<Team[]>(
+      "https://backendspring-production.up.railway.app/EquipeController/displayEquipes"
+    );
+  }
 
- 
+  public assignstudenttoequipe(idEtudiant: any, ideq: any) {
+    return this.http.post(
+      `${this.API}/assignEtudiantEquipe/${ideq}/${idEtudiant}`,
+      {}
+    );
+  }
 }

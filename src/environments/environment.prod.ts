@@ -1,9 +1,11 @@
-const contracts = "http://localhost:8081/SpringMVC/ContratApi/";
-const students = "http://localhost:8081/SpringMVC/controllerEtudiant/";
+const contracts = "https://backendspring-production.up.railway.app/ContratApi/";
+const students =
+  "https://backendspring-production.up.railway.app/controllerEtudiant/";
 export const environment = {
   production: true,
-  url: "http://localhost:8081/SpringMVC/",
-  urldep: "http://localhost:8081/SpringMVC/DepartmentController/",
+  url: "https://backendspring-production.up.railway.app/",
+  urldep:
+    "https://backendspring-production.up.railway.app/DepartmentController/",
   endpoints: {
     contracts: {
       getAll: contracts + "getAll",
