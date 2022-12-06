@@ -1,0 +1,69 @@
+<div class="panel-header panel-header-sm">
+</div>
+<div class="main-content">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="card ">
+        <div class="card-header">
+          <h5 class="title">{{action}} Une equipe</h5>
+        </div>
+        <div class="card-body">
+          <form [formGroup]="teamForm" (ngSubmit)="onSubmit()">
+            <div class="form-group col-md-6">
+               <label>Nom:*</label>
+               <input 
+               type="text" 
+               name="nomEquipe" 
+               formControlName="nomEquipe"
+               class="form-control"
+                >
+                
+            </div>
+            <div class="form-group col-md-6">
+               <label>Niveau:*</label>
+               <select  class="form-control" formControlName="niv">
+                <!-- <option  value="{{selectedNiveau}}" selected> {{selectedNiveau}}</option> -->
+                <option *ngFor="let op of niveaux" [ngValue]="op"> {{op}}</option>
+              </select>
+            
+            </div>
+            
+
+            <h3>Detail Equipe:</h3>
+            <div class="row"  formGroupName="equipedetail">
+              <div class="form-group col-md-6">
+                <h6>salle:</h6>
+                <input 
+                type="text" 
+                name="salle" 
+                formControlName="salle"
+                class="form-control" 
+                required 
+                minlength="3"
+                placeholder="salle">
+                
+              </div>
+              <div class="form-group col-md-6">
+                <h6>thematique:</h6>
+                <input 
+                type="text" 
+                name="thematique" 
+                formControlName="thematique"
+                class="form-control" 
+                placeholder="thematique">
+              </div>
+            </div>
+             <button 
+             type="submit"
+              class="btn btn-sm btn-success">
+               {{action}}
+             </button>
+           
+           </form>           
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+</div>
