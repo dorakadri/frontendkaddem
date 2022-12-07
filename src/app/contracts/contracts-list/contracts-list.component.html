@@ -243,11 +243,7 @@
                       *ngFor="let student of studentsList"
                       [ngValue]="student"
                     >
-                      <ng-container
-                        *ngIf="student.nomE != contract.etudiant.nomE"
-                      >
-                        {{ student.nomE }} {{ student.prenomE }}
-                      </ng-container>
+                      {{ student.nomE }} {{ student.prenomE }}
                     </option>
                   </select>
                   <!-- <div *ngIf="contract.etudiant">
