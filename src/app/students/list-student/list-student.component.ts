@@ -1,67 +1,65 @@
-import { Component, OnInit } from '@angular/core';
-import { StudentService } from '../../Core/Services/student.service';
-import { NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
-import { Student } from '../../core/Modals/Student';
-import { Team } from '../../core/Modals/Team';
-
+import { Component, OnInit } from "@angular/core";
+import { StudentService } from "../../Core/Services/student.service";
+import { NgForm } from "@angular/forms";
+import { Router } from "@angular/router";
+import { Student } from "../../core/Modals/Student";
+import { Team } from "../../core/Modals/Team";
 
 @Component({
-  selector: 'app-list-student',
-  templateUrl: './list-student.component.html',
-  styleUrls: ['./list-student.component.css']
+  selector: "app-list-student",
+  templateUrl: "./list-student.component.html",
+  styleUrls: ["./list-student.component.css"],
 })
 export class ListStudentComponent implements OnInit {
- title = 'gestion Etudiant';
+  title = "gestion Etudiant";
 
-//studentDetails = null as any;
-public studentDetails : Student[]=[] ;
-list: Student []|any=[];
- 
- searchText: any;
- 
+  //studentDetails = null as any;
+  public studentDetails: Student[] = [];
+  list: Student[] | any = [];
+
+  searchText: any;
+
   studentToUpdate = {
-    idEtudiant:"",
-    nomE:"",
-    prenomE:"",
-    date_naissance:"",
-    option:"",
-        departement:""
+    idEtudiant: "",
+    nomE: "",
+    prenomE: "",
+    date_naissance: "",
+    options: "",
+    departement: "",
+  };
+  constructor(private studentService: StudentService, private router: Router) {
+    //this.getStudentsDetails();
   }
-  constructor(private studentService: StudentService,private router:Router) {
-      //this.getStudentsDetails();
-   }
 
   ngOnInit(): void {
-      this.studentService.getStudents().subscribe(
-      (response : Student [])=>{
-        this.studentDetails=response;
+    this.studentService.getStudents().subscribe(
+      (response: Student[]) => {
+        this.studentDetails = response;
         console.log(this.studentDetails);
-
       },
-      error=>{
-        console.log(error)
+      (error) => {
+        console.log(error);
       },
-      ()=>{}
-    )
+      () => {}
+    );
   }
 
- displayStyle = "none";
- displayStyle2 = "none";
-  
+  displayStyle = "none";
+  displayStyle2 = "none";
+
   openPopup() {
     this.displayStyle = "block";
   }
-   openPopup2() {
+  openPopup2() {
     this.displayStyle2 = "block";
   }
   closePopup() {
     this.displayStyle = "none";
   }
-   closePopup2() {
+  closePopup2() {
     this.displayStyle2 = "none";
   }
-register(registerForm: NgForm) {
+  register(registerForm: NgForm) {
     this.studentService.registerStudent(registerForm.value).subscribe(
       (resp) => {
         console.log(resp);
@@ -71,7 +69,7 @@ register(registerForm: NgForm) {
       }
     );
   }
-/* 
+  /* 
   getStudentsDetails() {
     this.studentService.getStudents().subscribe(
       (resp) => {
@@ -84,13 +82,15 @@ register(registerForm: NgForm) {
     );
   } */
 
-  deleteStudent(student:any) {
-     let i =this.studentDetails.findIndex(e => e.idEtudiant ===student.idEtudiant);
-     console.log(i);
+  deleteStudent(student: any) {
+    let i = this.studentDetails.findIndex(
+      (e) => e.idEtudiant === student.idEtudiant
+    );
+    console.log(i);
     this.studentService.deleteStudent(student.idEtudiant).subscribe(
       (resp) => {
         console.log(resp);
-         this.studentDetails.splice(i,1);
+        this.studentDetails.splice(i, 1);
       },
       (err) => {
         console.log(err);
@@ -101,14 +101,13 @@ register(registerForm: NgForm) {
     );
   }
 
-  edit(studuent: any){
-       console.log(studuent);
+  edit(studuent: any) {
+    console.log(studuent);
     this.studentToUpdate = studuent;
-         console.log(this.studentToUpdate);
- 
+    console.log(this.studentToUpdate);
   }
 
-  updateStudent(){
+  updateStudent() {
     this.studentService.updateStudents(this.studentToUpdate).subscribe(
       (resp) => {
         console.log(resp);
@@ -118,6 +117,4 @@ register(registerForm: NgForm) {
       }
     );
   }
-
-  
 }
