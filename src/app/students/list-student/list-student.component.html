@@ -1,45 +1,46 @@
 <div class="panel-header panel-header-sm"></div>
-<div class="col-md-12">
+<div class="main-content" style="margin-top: 100px">
   <div class="card">
-    <div class="card-header">
-      <h5 class="card-category">Tous les etudiants</h5>
-      <h4 class="card-title">liste des étudiants</h4>
-
-      <td>
-        <button
-          type="button"
-          routerLink="/students/ajouter"
-          class="btn btn-danger"
-        >
-          Ajouter Etudiant
-        </button>
-      </td>
-      <!-- Search form -->
-      <form
-        class="form-inline d-flex justify-content-center md-form form-sm active-pink active-pink-2 mt-2"
+    <div class="card-header d-flex justify-content-between">
+      <h4 class="card-title">Student List</h4>
+      <button
+        type="button"
+        routerLink="/students/ajouter"
+        class="btn"
+        style="background-color: #fa7641"
       >
-        <i class="fas fa-search" aria-hidden="true"></i>
-        <input
-          class="form-control"
-          type="text"
-          name="search"
-          [(ngModel)]="searchText"
-          autocomplete="on"
-          placeholder=" SEARCH  "
-        />
-      </form>
+        Add Student
+      </button>
     </div>
 
     <div class="card-body">
+      <!-- Search form -->
+      <div class="col-sm-6 col-lg-3">
+        <div class="input-group">
+          <input
+            class="form-control"
+            type="text"
+            name="search"
+            [(ngModel)]="searchText"
+            autocomplete="on"
+            placeholder=" SEARCH  "
+          />
+          <div class="input-group-append">
+            <span class="input-group-text">
+              <i class="now-ui-icons ui-1_zoom-bold"></i
+            ></span>
+          </div>
+        </div>
+      </div>
       <table class="table">
         <thead class="text-primary">
           <th>id</th>
-          <th>Nom</th>
-          <th>Prénom</th>
-          <th>Date Naissance</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Date of birth</th>
           <th>option</th>
-          <th>departement</th>
-          <th>gestion</th>
+          <th>Department</th>
+          <th>Actions</th>
         </thead>
         <tbody>
           <tr *ngFor="let student of studentDetails | filter : searchText">
@@ -118,12 +119,12 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Modifier Etudiant</h4>
+        <h4 class="modal-title">Update Student</h4>
       </div>
       <div class="modal-body">
         <form #updateForm="ngForm" (ngSubmit)="updateStudent()">
           <div class="form-group">
-            <label for="idEtudiant"> idEtudiant :</label>
+            <label for="idEtudiant"> Student id :</label>
             <input
               type="text"
               disabled
@@ -135,7 +136,7 @@
             />
           </div>
           <div class="form-group">
-            <label for="nomE">nom:</label>
+            <label for="nomE">First Name:</label>
             <input
               type="text"
               #nomE
@@ -146,7 +147,7 @@
             />
           </div>
           <div class="form-group">
-            <label for="prenomE">prenom:</label>
+            <label for="prenomE">Last Name:</label>
             <input
               type="text"
               #prenomE
@@ -157,7 +158,7 @@
             />
           </div>
           <div class="form-group">
-            <label for="percentage">date naissance :</label>
+            <label for="percentage">Date of birth :</label>
             <input
               type="date"
               #date_naissance
@@ -212,7 +213,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h4 class="modal-title" [ngStyle]="{ color: 'red' }">
-          Etudiant supprimé avec succés
+          Student Deleted successfully
         </h4>
       </div>
       <div class="modal-body"></div>

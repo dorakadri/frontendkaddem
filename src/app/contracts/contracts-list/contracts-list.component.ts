@@ -34,6 +34,7 @@ export class ContractsListComponent implements OnInit {
     this.contractsApi.getAllStudents().subscribe(
       response=>{
         this.studentsList=response;
+        console.log(this.studentsList)
       },
       error=>{
         console.log(error)

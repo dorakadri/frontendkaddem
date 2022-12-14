@@ -1,6 +1,6 @@
-const contracts = "https://backendspring-production.up.railway.app/ContratApi/";
+const contracts = "http://localhost:8081/ContratApi/";
 const students =
-  "https://backendspring-production.up.railway.app/controllerEtudiant/";
+  "http://localhost:8081/controllerEtudiant/";
 export const environment = {
   production: true,
   url: "https://backendspring-production.up.railway.app/",

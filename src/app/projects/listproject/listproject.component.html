@@ -55,7 +55,11 @@
       <div class="card">
         <div class="card-header d-flex justify-content-between">
           <h4 class="card-title">Project List</h4>
-          <button class="btn btn-success" routerLink="addnewproject">
+          <button
+            class="btn"
+            style="background-color: #fa7641"
+            routerLink="addnewproject"
+          >
             ADD PROJECT
           </button>
         </div>
@@ -66,8 +70,8 @@
             ></app-search>
           </div>
           <div class="table-responsive tableall">
-            <table class="table align-middle mb-0 bg-white">
-              <thead class="bg-light stickyhead">
+            <table class="table">
+              <thead class="text-primary stickyhead">
                 <th (click)="sortdata()">
                   Project Name
                   <i *ngIf="desc === true">

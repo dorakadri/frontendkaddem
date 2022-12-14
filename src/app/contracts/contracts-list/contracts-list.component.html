@@ -1,5 +1,5 @@
 <div class="panel-header panel-header-sm"></div>
-<div class="main-content" style="margin-top: 100px">
+<div class="main-content" [ngStyle]="{ marginTop: '100px' }">
   <div class="card">
     <div class="card-body">
       <form #searchForm="ngForm" (ngSubmit)="onSearch(searchForm)">
@@ -155,11 +155,11 @@
             </div>
           </div>
           <div class="col-md-1">
-            <div class="form-group" style="padding-top: 15px">
+            <div class="form-group" style="padding-top: 15px" [ngStyle]="{ paddingTop: '15px' }">
               <button
                 type="submit"
                 class="btn"
-                style="background-color: #fa7641"
+                [ngStyle]="{ backgroundColor: '#fa7641' }"
                 [disabled]="
                   startDate.dirty &&
                   endDate.dirty &&
@@ -177,12 +177,13 @@
   <div class="row">
     <div class="col-md-12">
       <div class="card">
-        <div class="card-header text-right">
-          <div class="form-group" style="padding-top: 15px">
+        <div class="card-header d-flex justify-content-between">
+          <h4 class="card-title">Contracts List</h4>
+          <div class="form-group">
             <button
               type="button"
               class="btn"
-              style="background-color: #fa7641"
+              [ngStyle]="{ backgroundColor: '#fa7641' }"
               routerLink="new"
             >
               Add New Contract
@@ -225,33 +226,14 @@
                     {{contract.}}
                   </td> -->
                 <td>
-                  <select
-                    #selectedStudent
-                    class="custom-select"
-                    (change)="
-                      AffectStudentOnChange(selectedStudent.value, contract)
-                    "
-                  >
-                    <option selected *ngIf="contract.etudiant">
-                      {{ contract.etudiant.nomE }}
-                      {{ contract.etudiant.prenomE }}
-                    </option>
-                    <option selected *ngIf="!contract.etudiant">
-                      not Affected yet !
-                    </option>
-                    <option
-                      *ngFor="let student of studentsList"
-                      [ngValue]="student"
-                    >
-                      {{ student.nomE }} {{ student.prenomE }}
-                    </option>
+                  <select #selectedStudent class="custom-select" (change)="AffectStudentOnChange(selectedStudent.value, contract)">
+                    <option selected *ngIf="contract.etudiant">{{contract.etudiant.nomE}} {{contract.etudiant.prenomE}}</option>
+                    <option selected *ngIf="!contract.etudiant">not Affected yet !</option>
+                    <option *ngFor="let student of studentsList"  [ngValue]="student.value" >
+                        <ng-container> {{student.nomE}} {{student.prenomE}} </ng-container>
+                    </option>                        
                   </select>
-                  <!-- <div *ngIf="contract.etudiant">
-                      {{contract.etudiant.nomE}} {{contract.etudiant.prenomE}}
-                    </div>
-                    <div *ngIf="!contract.etudiant">
-                      not Affected yet !
-                    </div> -->
+                  
                 </td>
                 <td class="text-right">
                   <!-- info icon -->
@@ -317,3 +299,36 @@
     </div>
   </div>
 </div>
+
+
+
+
+<!-- <select
+                    #selectedStudent
+                    class="custom-select"
+                    (change)="
+                      AffectStudentOnChange(selectedStudent.value, contract)
+                    "
+                  >
+                    <option selected *ngIf="contract.etudiant">
+                      {{ contract.etudiant.nomE }}
+                      {{ contract.etudiant.prenomE }}
+                    </option>
+                    <option selected *ngIf="!contract.etudiant">
+                      not Affected yet !
+                    </option>
+                    <option
+                      *ngFor="let student of studentsList"
+                      [ngValue]="student"
+                    >
+                    <div *ngIf="contract.etudiant">
+                      {{contract.etudiant.nomE}} {{contract.etudiant.prenomE}}
+                    </div>
+                    <div *ngIf="!contract.etudiant">
+                      not Affected yet !
+                    </div>
+                      <ng-container *ngIf="student == contract.etudiant">
+                        {{ student.nomE }} {{ student.prenomE }}
+                      </ng-container>
+                    </option>
+                  </select> -->

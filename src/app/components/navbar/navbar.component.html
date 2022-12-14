@@ -10,6 +10,7 @@
           <span class="navbar-toggler-bar bar3"></span>
         </button>
       </div>
+      <a class="navbar-brand" href="#pablo">{{ getTitle() }}</a>
     </div>
     <button
       class="navbar-toggler"
@@ -53,14 +54,10 @@
               <span class="d-lg-none d-md-block">Some Actions</span>
             </p>
           </a>
-          <div
-            class="dropdown-menu dropdown-menu-right"
-            ngbDropdownMenu
-            aria-labelledby="dropdownBasic1"
-          >
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <a class="dropdown-item" href="#">Something else here</a>
+          <div class="dropdown-menu dropdown-menu-right" ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <a class="dropdown-item" href="#" style="cursor: pointer;">my Profile</a>
+            <a class="dropdown-item" href="#" style="cursor: pointer;">my account Settings</a>
+            <a class="dropdown-item" (click)="logout()" style="cursor: pointer;">Log Out</a>
           </div>
         </li>
         <li class="nav-item">

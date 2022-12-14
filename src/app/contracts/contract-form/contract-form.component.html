@@ -4,7 +4,7 @@
     <div class="col-md-12">
       <div class="card">
         <div class="card-header">
-          <h5 class="title">{{ action }} Contract</h5>
+          <h4 class="card-title">{{ action }} Contract</h4>
         </div>
         <div class="card-body">
           <form [formGroup]="contractForm" (ngSubmit)="onSubmit()">
@@ -406,10 +406,10 @@
                     >
                       <option
                         *ngFor="let op of options"
-                        [ngValue]="options"
-                        value="options"
+                        [ngValue]="op"
+                        value="op"
                       >
-                        {{ options }}
+                        {{ op }}
                       </option>
                     </select>
                     <small

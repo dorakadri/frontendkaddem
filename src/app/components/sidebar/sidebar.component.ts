@@ -7,29 +7,39 @@ declare interface RouteInfo {
   class: string;
 }
 export const ROUTES: RouteInfo[] = [
-  { path: "/dashboard", title: "Dashboard", icon: "design_app", class: "" },
+  { path: "/dashboard", title: "Dashboard", icon: "bi bi-house", class: "" },
   {
     path: "/universities",
     title: "universities",
-    icon: "objects_spaceship",
+    icon: " bi bi-building",
     class: "",
   },
   {
     path: "/departments",
     title: "departments",
-    icon: "design_bullet-list-67",
+    icon: "bi bi-building-up",
     class: "",
   },
   {
     path: "/professors",
     title: "professors",
-    icon: "design_bullet-list-67",
+    icon: "bi bi-easel3",
     class: "",
   },
-  { path: "/students", title: "students", icon: "ui-1_bell-53", class: "" },
-  { path: "/contracts", title: "Contracts", icon: "education_atom", class: "" },
-  { path: "/teams", title: "teams", icon: "text_caps-small", class: "" },
-  { path: "/projects", title: "projects", icon: "location_map-big", class: "" },
+  {
+    path: "/students",
+    title: "students",
+    icon: " now-ui-icons education_hat",
+    class: "",
+  },
+  {
+    path: "/contracts",
+    title: "Contracts",
+    icon: "bi bi-file-earmark-person",
+    class: "",
+  },
+  { path: "/teams", title: "teams", icon: "bi bi-people", class: "" },
+  { path: "/projects", title: "projects", icon: "bi bi-journal", class: "" },
 ];
 
 @Component({
