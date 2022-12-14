@@ -1,12 +1,10 @@
 import { Routes } from "@angular/router";
-import { UserProfileComponent } from "../../user-profile/user-profile.component";
 
 import { DashboardComponent } from "../../dashboard/dashboard.component";
 
 export const AdminLayoutRoutes: Routes = [
   { path: "", component: DashboardComponent },
   { path: "dashboard", component: DashboardComponent },
-  { path: "user-profile", component: UserProfileComponent },
   {
     path: "contracts",
     loadChildren: () =>

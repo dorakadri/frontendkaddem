@@ -7,7 +7,6 @@ import {
 } from "@angular/common";
 import { Router } from "@angular/router";
 import Chart from "chart.js";
-import { AuthService } from "../../Core/Services/auth.service";
 
 @Component({
   selector: "app-navbar",
@@ -26,8 +25,7 @@ export class NavbarComponent implements OnInit {
   constructor(
     location: Location,
     private element: ElementRef,
-    private router: Router,
-    private authService:AuthService
+    private router: Router
   ) {
     this.location = location;
     this.sidebarVisible = false;
@@ -45,10 +43,6 @@ export class NavbarComponent implements OnInit {
         this.mobile_menu_visible = 0;
       }
     });
-  }
-
-  logout(){
-    this.authService.logOut();
   }
 
   collapse() {
